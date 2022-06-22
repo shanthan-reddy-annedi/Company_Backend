@@ -17,14 +17,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     AppUserService appUserService;
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(appUserService).passwordEncoder(getPE());
+        auth.userDetailsService(appUserService);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().anyRequest().permitAll();
+//        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.authorizeRequests().antMatchers("/company/id/**").hasAuthority("admin").and().formLogin();
 
     }
 
