@@ -22,4 +22,5 @@ public class TeamController {
     public List<Company> getCompany(){
         return teamService.getAllTeams();
     }
+
 }
