@@ -23,6 +23,7 @@ public class AppUserService implements UserDetailsService {
     }
 
     public String createAppUser(AppUserObj appUserObj){
+        //TODO: CONVERT THE RAW PASSWORD.
         AppUser appUser = appUserObj.toAppUser();
         try{
             appUserRepo.save(appUser);
