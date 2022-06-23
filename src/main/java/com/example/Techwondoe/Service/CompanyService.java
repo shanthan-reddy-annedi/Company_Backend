@@ -1,6 +1,7 @@
 package com.example.Techwondoe.Service;
 
 import com.example.Techwondoe.Repositories.CompanyRepo;
+import com.example.Techwondoe.Responses.CompanyResponse;
 import com.example.Techwondoe.models.Company;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,15 @@ public class CompanyService {
 
     public Company getCompanyWithTeam(int id){
         return companyRepo.findById(id).orElse(null);
+    }
+
+    public CompanyResponse getCompanyByName(String name){
+        try{
+            return companyRepo.getComapnyByName(name).toCompanyResponse();
+        }catch (Exception e){
+            return null;
+        }
+
     }
 
 }

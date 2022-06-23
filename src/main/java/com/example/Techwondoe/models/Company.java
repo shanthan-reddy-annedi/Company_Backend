@@ -1,6 +1,7 @@
 package com.example.Techwondoe.models;
 
 
+import com.example.Techwondoe.Responses.CompanyResponse;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
@@ -23,7 +24,6 @@ public class Company {
     @Column(nullable = false, unique = true)
     private String companyName;
 
-//    @Column(nullable = false)
     private String companyCEO;
 
     private String companyAddress;
@@ -33,5 +33,15 @@ public class Company {
     @OneToMany(mappedBy = "company")
     @JsonIgnoreProperties("company")
     private List<Team> team;
+
+    public CompanyResponse toCompanyResponse(){
+        return CompanyResponse.builder()
+                .companyAddress(this.companyAddress)
+                .companyCEO(this.companyCEO)
+                .companyName(this.companyName)
+                .inceptionDate(this.inceptionDate)
+                .UUID(this.UUID)
+                .build();
+    }
 
 }
