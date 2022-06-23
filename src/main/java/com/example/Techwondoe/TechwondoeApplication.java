@@ -33,10 +33,10 @@ public class TechwondoeApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 //		Company company1 = ComapnyObj.builder()
-//				.companyAddress("Hyderabad")
-//				.companyCEO("shanthan reddy")
-//				.companyName("ASR Limiteds")
-//				.inceptionDate("12-05-2019")
+//				.companyAddress("Bangalore")
+//				.companyCEO("Ankit")
+//				.companyName("Ankit InfoTech")
+//				.inceptionDate("20-02-2009")
 //				.build().toCompany();
 //
 //		Company company2 =ComapnyObj.builder()
@@ -48,8 +48,8 @@ public class TechwondoeApplication implements CommandLineRunner {
 //		companyRepo.save(company1);
 //		companyRepo.save(company2);
 //
-//		AppUser appUser1 = AppUser.builder().username("asr").password(new BCryptPasswordEncoder().encode("asr")).authorites("admin").build();
-//		AppUser appUser2 = AppUser.builder().username("read").password(new BCryptPasswordEncoder().encode("asr")).authorites("read").build();
+//		AppUser appUser1 = AppUser.builder().username("admin").password(new BCryptPasswordEncoder().encode("asr")).authorites("admin").build();
+//		AppUser appUser2 = AppUser.builder().username("read2").password(new BCryptPasswordEncoder().encode("asr")).authorites("read").build();
 //
 //		appUserRepo.save(appUser1);
 //		appUserRepo.save(appUser2);

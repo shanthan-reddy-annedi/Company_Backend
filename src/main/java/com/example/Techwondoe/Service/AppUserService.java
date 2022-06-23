@@ -1,6 +1,8 @@
 package com.example.Techwondoe.Service;
 
+import com.example.Techwondoe.ObjectCreation.AppUserObj;
 import com.example.Techwondoe.Repositories.AppUserRepo;
+import com.example.Techwondoe.models.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,5 +20,15 @@ public class AppUserService implements UserDetailsService {
         if(userDetails != null)
             return userDetails;
         throw new UsernameNotFoundException("Wrong User");
+    }
+
+    public String createAppUser(AppUserObj appUserObj){
+        AppUser appUser = appUserObj.toAppUser();
+        try{
+            appUserRepo.save(appUser);
+            return "User Saved Sucessfully";
+        }catch (Exception e){
+            return "Unable to Create AppUser";
+        }
     }
 }

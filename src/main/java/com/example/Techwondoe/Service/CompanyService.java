@@ -24,7 +24,7 @@ public class CompanyService {
 
     public CompanyResponse getCompanyByName(String name){
         try{
-            return companyRepo.getComapnyByName(name).toCompanyResponse();
+            return companyRepo.getComapanyByName(name).toCompanyResponse();
         }catch (Exception e){
             return null;
         }
