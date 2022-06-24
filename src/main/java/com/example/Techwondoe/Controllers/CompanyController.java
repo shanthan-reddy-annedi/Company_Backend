@@ -3,26 +3,27 @@ package com.example.Techwondoe.Controllers;
 import com.example.Techwondoe.ObjectCreation.ComapnyObj;
 import com.example.Techwondoe.Responses.CompanyResponse;
 import com.example.Techwondoe.Service.CompanyService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
+@RequiredArgsConstructor
 public class CompanyController {
+    private final CompanyService companyService;
 
-    @Autowired
-    CompanyService companyService;
-
-    @PostMapping("/company/create")
-    public void createCompany(@RequestBody ComapnyObj comapnyObj){
+    @PostMapping("/api/company/create")
+    public void createCompany(@RequestBody @Valid ComapnyObj comapnyObj){
         companyService.saveCompany(comapnyObj.toCompany());
     }
 
-    @GetMapping("/get/company/byid/{id}")
+    @GetMapping("/api/get/company/byid/{id}")
     public CompanyResponse getCompany(@PathVariable("id") int id){
         return companyService.getCompanyWithTeam(id).toCompanyResponse();
     }
 
-    @GetMapping("/get/company/byname/{name}")
+    @GetMapping("/api/get/company/byname/{name}")
     public CompanyResponse getCompanyByName(@PathVariable("name") String name){
         return companyService.getCompanyByName(name);
     }

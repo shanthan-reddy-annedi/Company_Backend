@@ -2,19 +2,24 @@ package com.example.Techwondoe.Controllers;
 
 import com.example.Techwondoe.ObjectCreation.AppUserObj;
 import com.example.Techwondoe.Service.AppUserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
+@RequiredArgsConstructor
+@Slf4j
 public class AppUserController {
 
-    @Autowired
-    AppUserService appUserService;
+    private final AppUserService appUserService;
 
-    @PostMapping("/create/user")
-    public String createAppUser(@RequestBody AppUserObj appUserObj){
+    @PostMapping("/api/create/user")
+    public String createAppUser(@Valid @RequestBody AppUserObj appUserObj){
+        log.info(appUserObj.getUsername()+appUserObj.getPassword()+appUserObj.getAuthorities());
         return appUserService.createAppUser(appUserObj);
     }
 }

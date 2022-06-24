@@ -3,6 +3,8 @@ package com.example.Techwondoe.ObjectCreation;
 import com.example.Techwondoe.models.Company;
 import lombok.*;
 
+import javax.validation.constraints.NotNull;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -10,12 +12,16 @@ import lombok.*;
 @Builder
 @ToString
 public class ComapnyObj {
+    @NotNull
     private String companyName;
 
+    @NotNull
     private String companyCEO;
 
+    @NotNull
     private String companyAddress;
 
+    @NotNull
     private String inceptionDate;
 
     public Company toCompany(){

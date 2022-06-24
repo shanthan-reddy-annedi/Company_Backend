@@ -1,18 +1,21 @@
 package com.example.Techwondoe.Service;
 
+import com.example.Techwondoe.Error.NotFoundExecption;
 import com.example.Techwondoe.Repositories.CompanyRepo;
 import com.example.Techwondoe.Responses.CompanyResponse;
 import com.example.Techwondoe.models.Company;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpStatusCodeException;
+
+import javax.validation.constraints.Null;
 
 @Service
+@Slf4j
+@RequiredArgsConstructor
 public class CompanyService {
-
-    private CompanyRepo companyRepo;
-
-    public CompanyService(CompanyRepo companyRepo) {
-        this.companyRepo = companyRepo;
-    }
+    private final CompanyRepo companyRepo;
 
     public void saveCompany(Company company){
         companyRepo.save(company);
@@ -23,11 +26,8 @@ public class CompanyService {
     }
 
     public CompanyResponse getCompanyByName(String name){
-        try{
-            return companyRepo.getComapanyByName(name).toCompanyResponse();
-        }catch (Exception e){
-            return null;
-        }
+        log.info(name);
+        return companyRepo.getComapanyByName(name).orElseThrow(()-> new NotFoundExecption("Company Not Found")).toCompanyResponse();
 
     }
 

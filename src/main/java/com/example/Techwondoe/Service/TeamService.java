@@ -4,20 +4,17 @@ import com.example.Techwondoe.ObjectCreation.TeamObj;
 import com.example.Techwondoe.Repositories.CompanyRepo;
 import com.example.Techwondoe.Repositories.TeamRepo;
 import com.example.Techwondoe.models.Company;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class TeamService {
 
-    private TeamRepo teamRepo;
-    private CompanyRepo companyRepo;
-
-    public TeamService(TeamRepo teamRepo, CompanyRepo companyRepo) {
-        this.teamRepo = teamRepo;
-        this.companyRepo = companyRepo;
-    }
+    private final TeamRepo teamRepo;
+    private final CompanyRepo companyRepo;
 
     public String saveTeam(TeamObj teamObj, int id){
         Company company = companyRepo.findById(id).orElse(null);

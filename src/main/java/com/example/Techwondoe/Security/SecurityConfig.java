@@ -23,19 +23,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     AppUserService appUserService;
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(appUserService);
+        //TODO: Added passwordEncoder here. check once
+        auth.userDetailsService(appUserService).passwordEncoder(getPE());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.csrf().disable();
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests()
+        http.csrf().disable()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .authorizeHttpRequests()
+                .antMatchers("/api/create/user").permitAll()
                 .antMatchers(GET).hasAnyAuthority("admin","read")
-                .antMatchers(POST).hasAnyAuthority("admin");
-        http.addFilter(new CustomAuthenticationFilter(authenticationManager()));
-        http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
+                .antMatchers(POST).hasAnyAuthority("admin")
+                .and()
+                .addFilter(new CustomAuthenticationFilter(authenticationManager()))
+                .addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .formLogin();
 
 
     }
