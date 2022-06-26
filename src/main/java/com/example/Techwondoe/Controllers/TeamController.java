@@ -14,7 +14,7 @@ import java.util.List;
 public class TeamController {
     private final TeamService teamService;
     @PostMapping("/api/create/team/company/{id}")
-    public String createCompany(@RequestBody @Valid TeamObj teamObj, @PathVariable("id") int id){
+    public String createTeam(@RequestBody @Valid TeamObj teamObj, @PathVariable("id") int id){
             return teamService.saveTeam(teamObj,id);
     }
     @GetMapping("/api/get/teams")

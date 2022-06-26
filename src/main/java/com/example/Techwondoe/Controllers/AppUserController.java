@@ -3,7 +3,6 @@ package com.example.Techwondoe.Controllers;
 import com.example.Techwondoe.ObjectCreation.AppUserObj;
 import com.example.Techwondoe.Service.AppUserService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

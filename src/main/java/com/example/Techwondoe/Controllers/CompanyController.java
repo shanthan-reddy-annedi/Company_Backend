@@ -19,7 +19,7 @@ public class CompanyController {
     }
 
     @GetMapping("/api/get/company/byid/{id}")
-    public CompanyResponse getCompany(@PathVariable("id") int id){
+    public CompanyResponse getCompanyById(@PathVariable("id") int id){
         return companyService.getCompanyWithTeam(id).toCompanyResponse();
     }
 

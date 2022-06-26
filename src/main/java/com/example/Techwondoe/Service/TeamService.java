@@ -4,6 +4,7 @@ import com.example.Techwondoe.ObjectCreation.TeamObj;
 import com.example.Techwondoe.Repositories.CompanyRepo;
 import com.example.Techwondoe.Repositories.TeamRepo;
 import com.example.Techwondoe.models.Company;
+import com.example.Techwondoe.models.Team;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,8 @@ public class TeamService {
     public String saveTeam(TeamObj teamObj, int id){
         Company company = companyRepo.findById(id).orElse(null);
         if(company != null) {
-            teamRepo.save(teamObj.toTeam(company));
+            Team team = teamObj.toTeam(company);
+            teamRepo.save(team);
             return "Saved Successfully";
         }
         else

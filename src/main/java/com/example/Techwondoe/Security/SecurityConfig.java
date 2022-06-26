@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,7 +24,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     AppUserService appUserService;
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //TODO: Added passwordEncoder here. check once
         auth.userDetailsService(appUserService).passwordEncoder(getPE());
     }
 
@@ -34,15 +34,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeHttpRequests()
-                .antMatchers("/api/create/user").permitAll()
+                .antMatchers("/actuator/**").hasAnyAuthority("admin")
                 .antMatchers(GET).hasAnyAuthority("admin","read")
                 .antMatchers(POST).hasAnyAuthority("admin")
                 .and()
                 .addFilter(new CustomAuthenticationFilter(authenticationManager()))
-                .addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
-                .formLogin();
+                .addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
 
 
+    }
+
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring()
+                .antMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**","/api/create/user");
     }
 
     @Bean

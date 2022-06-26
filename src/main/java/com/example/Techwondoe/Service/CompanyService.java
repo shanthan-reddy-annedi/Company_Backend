@@ -26,7 +26,6 @@ public class CompanyService {
     }
 
     public CompanyResponse getCompanyByName(String name){
-        log.info(name);
         return companyRepo.getComapanyByName(name).orElseThrow(()-> new NotFoundExecption("Company Not Found")).toCompanyResponse();
 
     }

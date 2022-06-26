@@ -3,11 +3,8 @@ package com.example.Techwondoe;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class TechwondoeApplicationTests {
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-	@Test
-	void contextLoads() {
-	}
+class TechwondoeApplicationTests {
 
 }
