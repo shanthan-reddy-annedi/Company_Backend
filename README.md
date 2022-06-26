@@ -35,7 +35,7 @@ git clone https://github.com/shanthan-reddy-annedi/Company_Backend.git
 
 ```bash
 mvn package
-java -jar target/CompanyDetails-0.0.1-SNAPSHOT
+java -jar target/CompanyDetails-0.0.1-SNAPSHOT.jar
 ```
 
 + We can use below command to run the program. if there already exist a executable jar.
