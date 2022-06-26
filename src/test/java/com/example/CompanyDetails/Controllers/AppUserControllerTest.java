@@ -5,6 +5,7 @@ import static org.mockito.Mockito.when;
 
 import com.example.CompanyDetails.ObjectCreation.AppUserObj;
 import com.example.CompanyDetails.Service.AppUserService;
+import com.example.CompanyDetails.models.Authorites;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,11 +32,10 @@ class AppUserControllerTest {
     void testCreateAppUser() throws Exception {
         when(appUserService.createAppUser((AppUserObj) any())).thenReturn("Create App User");
 
-        AppUserObj appUserObj = AppUserObj.builder()
-                .authorities("admin")
-                .password("password")
-                .username("doe")
-                .build();
+        AppUserObj appUserObj = new AppUserObj();
+        appUserObj.setAuthorities(Authorites.ADMIN);
+        appUserObj.setPassword("iloveyou");
+        appUserObj.setUsername("janedoe");
         String content = (new ObjectMapper()).writeValueAsString(appUserObj);
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post("/api/create/user")
                 .contentType(MediaType.APPLICATION_JSON)

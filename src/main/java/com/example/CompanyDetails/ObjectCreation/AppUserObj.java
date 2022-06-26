@@ -1,6 +1,7 @@
 package com.example.CompanyDetails.ObjectCreation;
 
 import com.example.CompanyDetails.models.AppUser;
+import com.example.CompanyDetails.models.Authorites;
 import lombok.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -19,7 +20,7 @@ public class AppUserObj {
     @Size(min=8, max=12)
     private String password;
     @NotNull()
-    private String authorities;
+    private Authorites authorities;
 
     public AppUser toAppUser(){
         return AppUser.builder()

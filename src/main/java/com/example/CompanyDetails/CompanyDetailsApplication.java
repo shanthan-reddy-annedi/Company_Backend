@@ -24,18 +24,5 @@ public class CompanyDetailsApplication implements CommandLineRunner {
 	}
 	@Override
 	public void run(String... args) throws Exception {
-//		try {
-//			AppUserObj appUserObj = AppUserObj.builder()
-//					.username("admin")
-//					.password(new BCryptPasswordEncoder().encode("admin"))
-//					.authorities("admin")
-//					.build();
-//			AppUser appUser = appUserObj.toAppUser();
-//			appUserRepo.save(appUser);
-//		}catch (Exception e){
-//
-//		}
-//		System.out.println(new BCryptPasswordEncoder().matches("admin","$2a$10$TzA6EvJAxKW5/lhMfRi/ROjkKzaHwZzCkgzLy9AsIRGBZfeQWp/1e"));
-//	}
 	}
 }

@@ -15,6 +15,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static com.example.CompanyDetails.models.Authorites.ADMIN;
+import static com.example.CompanyDetails.models.Authorites.READ;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
 
@@ -34,9 +36,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeHttpRequests()
-                .antMatchers("/actuator/**").hasAnyAuthority("admin")
-                .antMatchers(GET).hasAnyAuthority("admin","read")
-                .antMatchers(POST).hasAnyAuthority("admin")
+                .antMatchers("/actuator/**").hasAnyAuthority(ADMIN.name())
+                .antMatchers(GET).hasAnyAuthority(ADMIN.name(),READ.name())
+                .antMatchers(POST).hasAnyAuthority(ADMIN.name())
                 .and()
                 .addFilter(new CustomAuthenticationFilter(authenticationManager()))
                 .addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);

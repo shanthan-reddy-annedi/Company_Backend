@@ -1,6 +1,7 @@
 package com.example.CompanyDetails.Repositories;
 
 import com.example.CompanyDetails.models.AppUser;
+import com.example.CompanyDetails.models.Authorites;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ class AppUserRepoTest {
         AppUser appUser = AppUser.builder()
                 .username("asr")
                 .password(new BCryptPasswordEncoder().encode("asr"))
-                .authorites("admin")
+                .authorites(Authorites.ADMIN)
                 .build();
 
         underTest.save(appUser);

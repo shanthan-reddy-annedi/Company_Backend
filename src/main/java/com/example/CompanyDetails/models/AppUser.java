@@ -26,11 +26,12 @@ public class AppUser implements UserDetails {
     @Column(nullable = false)
     private String password;
     @Column(nullable = false)
-    private String authorites;
+    @Enumerated(EnumType.STRING)
+    private Authorites authorites;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        String[] auth = authorites.split(":");
+        String[] auth = authorites.name().split(":");
 
         return Arrays.stream(auth).map(x->new SimpleGrantedAuthority(x)).collect(Collectors.toList());
     }
