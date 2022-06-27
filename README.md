@@ -44,7 +44,7 @@ java -jar target/CompanyDetails-0.0.1-SNAPSHOT.jar
 mvn spring-boot:run
 ```
 
-The app will start running at <http://localhost:8080/>.
+The app will start running at http://localhost:8080/**.
 
 ## Explore Rest APIs
 
@@ -77,7 +77,7 @@ The app will start running at <http://localhost:8080/>.
 
 ![img.png](https://user-images.githubusercontent.com/76593616/175810481-24e16bb6-8e0b-449f-9ca1-b917952321da.png)
 
-## Accessing POST OR GET API'S
+## Getting the JWT Token.
 
 + to access the post or get api's we need to have an JWT access token.
 
@@ -89,8 +89,10 @@ http://localhost:8080/login
 
 ![img_1.png](https://user-images.githubusercontent.com/76593616/175809616-e4b74a6a-ad44-45ce-aad0-6d073cb630f9.png)
 
+## Accessing the API'S.
+
 + after we get the token when we want to access to any API we need to send the token in Authorization header
-+ value of Authorization has to start with Bearer. as shown
++ value of Authorization has to start with Bearer your_token. as shown
 
 ![img_2.png](https://user-images.githubusercontent.com/76593616/175809623-dfaa9b31-264b-435c-8aef-50dfecf682d8.png)
 
