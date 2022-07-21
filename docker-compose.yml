@@ -1,0 +1,13 @@
+version: '3'
+services:
+  mydbase:
+    image: mysql:8
+    environment:
+      - MYSQL_ROOT_PASSWORD=83355806
+ 
+  company_img:
+    build: .
+    ports:
+      - "8080:8080"
+
+

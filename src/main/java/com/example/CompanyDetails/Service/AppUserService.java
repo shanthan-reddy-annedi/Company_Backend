@@ -4,14 +4,12 @@ import com.example.CompanyDetails.ObjectCreation.AppUserObj;
 import com.example.CompanyDetails.Repositories.AppUserRepo;
 import com.example.CompanyDetails.models.AppUser;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-@Slf4j
 @RequiredArgsConstructor
 public class AppUserService implements UserDetailsService {
     private final AppUserRepo appUserRepo;

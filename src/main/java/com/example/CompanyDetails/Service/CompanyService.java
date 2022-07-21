@@ -5,11 +5,9 @@ import com.example.CompanyDetails.Repositories.CompanyRepo;
 import com.example.CompanyDetails.Responses.CompanyResponse;
 import com.example.CompanyDetails.models.Company;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
-@Slf4j
 @RequiredArgsConstructor
 public class CompanyService {
     private final CompanyRepo companyRepo;
